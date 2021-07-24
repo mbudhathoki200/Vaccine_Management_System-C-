@@ -169,6 +169,7 @@ void Vaccine::searchData()//6
     cout<<"From which option you want to perform searching "<<endl;
     cout<<"\n\t\t 1. By Citizenship No. \t\t\t 2. By Age "<<endl;
     cout<<"\n\t\t 3. By profession \t\t\t 4. By gender "<<endl;
+    cout<<"\n\t\t 5. Back to Main Menu"<<endl;
     cout<<"\n\n\t\tEnter your choice : ";
     int ch;
     cin>>ch;
@@ -193,6 +194,10 @@ void Vaccine::searchData()//6
         system("cls");
         search_by_gender();
         getch();
+        break;
+    case 5:
+    	system("cls");
+        menu();
         break;
     default:
         system("cls");
@@ -291,16 +296,16 @@ void Vaccine::search_by_profession()//6.3
     fflush(stdin);
     gets(pf);
     show();
-    in.read((char*)this,sizeof(Vaccine));
    while(!in.eof())
 	{
-	if(in.read(reinterpret_cast<char*>(this),sizeof(*this))){
+	if(in.read(reinterpret_cast<char*>(this),sizeof(*this))>0){
 
         if(strcmp(pf,profession)==0)
         {
             showList();
             flag=1;
             p++;
+            return;
 			
             
         }
@@ -378,7 +383,7 @@ int password()//b
     pass[i] = '\0';
     srand(time(0));
     cap=rand();
-    cout<<"\n\t\t\t\t\t CAPTURE:->  "<<cap<<endl;
+    cout<<"\n\n\t\t\t\t\tCAPTURE:-> "<<cap<<endl;
     cout<<" Please enter the valid capture :-   ";
     cin>>capt;
     if( (strcmp(cname,"a")==0) && (strcmp(pass,"b")==0) && cap==capt)

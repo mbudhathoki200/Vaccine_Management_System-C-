@@ -130,21 +130,26 @@ void Vaccine ::viewVaccine()//5
     cout<<"\t\t 1. Add more        \t\t\t2.View available \n\t\t\t\t\t 3. Back"<<endl;
     cin>>ch;
     int f_var=0;
-    fstream file("count.txt");
+    fstream file("count.txt",ios::in);
     file>>f_var;
+    file.close();
     switch(ch)
     {
     case 1:
         int m;
-        cout<<"\t Enter number of vaccines you want to add "<<endl;
+        cout<<"\t Enter number of vaccines you want to add :"<<endl;
         cin>>m;
         f_var=f_var+m;
+        file.open("count.txt",ios::out);
         file.seekg(0);
         file<<f_var;
         cout<<"\t\t Now total number of vaccines are : "<<f_var+s;
+        file.close();
         break;
     case 2:
+    	file.open("count.txt",ios::in);
         cout<<"\n\nAvailable number of vaccines are : "<<s+f_var;
+        file.close();
         break;
     case 3:
         system("cls");
@@ -162,7 +167,7 @@ void Vaccine::searchData()//6
 {
     Vaccine item;
     cout<<"\n\n\t\t\xB3\xB2=\xB2=\xB2-\xB3 VACCINE MANAGEMENT SYSTEM  \xB3\xB2=\xB2=\xB2-\xB3\n\n"<<endl;
-	cout<<"\t\t\t\t\t\t Powered By:- TEAM ACDC"<<endl<<endl;
+	cout<<"\t\t\t\t\t\t Powered By:- TEAM AC/DC"<<endl<<endl;
     cout<<"\n\t\t\t*****************************************\n";
     cout<<"\t\t\t\tSEARCHING STATISTICS";
     cout<<"\n\t\t\t*****************************************\n\n";
